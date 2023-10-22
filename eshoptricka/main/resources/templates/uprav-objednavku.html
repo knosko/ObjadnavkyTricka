@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj novú objednávku</title>
+</head>
+<body>
+  <h1>Uprav objednávku</h1>
+  <form method="POST" th:action="@{/uloz-upravenu-objednavku}" th:object="${objednavkaObjektPodlaIdThymeleaf}"><!-- objednavkaObjektThymeleaf je presne to iste, co mame v controlleri, ked volame tuto stranku -->
+    <input th:field="*{id}" type="hidden" />
+    Popis <input th:field="*{popis}" type="text" /><br />
+    Farba
+    <select th:field="*{farba}">
+      <option value="Červené">Červené</option>
+      <option value="Modré">Modré</option>
+      <option value="Zelené">Zelené</option>
+    </select><br />
+    Značka <input th:field="*{znacka}" type="text" /><br />
+    Veľkosť
+    <select th:field="*{velkost}">
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+    </select><br />
+    Počet <input th:field="*{pocet}" type="number" /><br />
+    Dátum objednávky <input th:field="*{datumObjednavky}" type="date" /><br />
+    Meno zákazníka <input th:field="*{menoZakaznika}" type="text" /><br />
+    <button type="submit">Ulož objednávku</button>
+  </form>
+</body>
+</html>

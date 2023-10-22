@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj nového používateľa</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+  <h1>Pridaj nového používateľa</h1>
+  <form method="POST" th:action="@{/uloz-pouzivatela}" th:object="${pouzivatelObjektThymeleaf}"><!-- pouzivatelObjektThymeleaf je presne to iste, co mame v controlleri, ked volame tuto stranku -->
+    Meno <input th:field="*{meno}" type="text" /><br />
+    Priezvisko <input th:field="*{priezvisko}" type="text" /><br />
+    Používateľské meno <input th:field="*{username}" type="text" /><br />
+    Heslo <input th:field="*{heslo}" type="password" /><br />
+    <button type="submit">Ulož registráciu</button>
+  </form>
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+  </form>
+</body>
+</html>

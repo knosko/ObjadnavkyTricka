@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zobraz všetky objednávky</title>
+</head>
+<body>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Popis</th>
+        <th>Farba</th>
+        <th>Značka</th>
+        <th>Veľkosť</th>
+        <th>Počet</th>
+        <th>Dátum objednávky</th>
+        <th>Meno zákazníka</th>
+        <th>Akcie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="konkretnaObjednavka:${vsetkyObjednavkyThymeleaf}">
+        <td th:text="${konkretnaObjednavka.popis}"></td>
+        <td th:text="${konkretnaObjednavka.farba}"></td>
+        <td th:text="${konkretnaObjednavka.znacka}"></td>
+        <td th:text="${konkretnaObjednavka.velkost}"></td>
+        <td th:text="${konkretnaObjednavka.pocet}"></td>
+        <td th:text="${konkretnaObjednavka.datumObjednavky}"></td>
+        <td th:text="${konkretnaObjednavka.menoZakaznika}"></td>
+        <td>
+          <a th:href="@{/uprav-objednavku/{id}(id=${konkretnaObjednavka.id})}">Uprav objednávku</a>
+          <a th:href="@{/odstran-objednavku/{id}(id=${konkretnaObjednavka.id})}">Odstráň objednávku</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+  </form>
+</body>
+</html>
